@@ -8,18 +8,38 @@ public class Arbol {
 		super();
 		this.raiz = raiz;
 	}
+	
+	/**
+	 * Llama al metodo preOrden de la clase Nodo
+	 */
 
 	public void preOrden() {
 		this.raiz.preOrden(raiz);
 	}
+	
+	/*
+	 * Llama al metdo postOrden de la clase Nodo
+	 */
 
 	public void postOrden() {
 		this.raiz.postOrden(raiz);
 	}
+	
+	/**
+	 * Llama al metodo buscarNodo de la clase Nodo
+	 * @param valor Valor del nodo que queremos encontrar
+	 * @return Nodo que queriamos buscar o null si no lo contiene
+	 */
 
 	public Nodo buscarNodo(String valor) {
 		return this.raiz.buscarNodo(valor);
 	}
+	
+	/**
+	 * Llama al metodo path de la clase Nodo
+	 * @param valor Valor del nodo hasta donde queremos mostrar la ruta
+	 * @return Ruta del nodo si lo contiene el arbol
+	 */
 
 	public String path(String valor) {
 		boolean contiene = this.raiz.comprobarNodo(valor);

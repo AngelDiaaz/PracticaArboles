@@ -26,17 +26,25 @@ public class Nodo {
 		return hijos;
 	}
 
+	/**
+	 * Comprueba si el nodo tiene nodos hijos o no
+	 * @param n Nodo a comprobar si tiene hijos
+	 * @return True si tiene hijos y false si no los tiene
+	 */
+	
 	public boolean tieneHijos(Nodo n) {
 		if (n.hijos == null) {
 			return false;
 		} else {
 			return true;
 		}
-
-		// return n.hijos.get(0) != null;
-
 	}
-
+	
+	/**
+	 * Muestra el arbol con el recorrido preOrden, empezando por la raiz y siguiendo por los nodos hijos
+	 * @param n Nodo que quieres sacar
+	 */
+	
 	public void preOrden(Nodo n) {
 		System.out.print(n.getValor() + "/");
 
@@ -47,6 +55,11 @@ public class Nodo {
 		}
 	}
 
+	/**
+	 * Muestra el arbol en recorrido postOrden, empezando por los nodos hijos y,luego por la raiz
+	 * @param n Nodo que quieres sacar
+	 */
+	
 	public void postOrden(Nodo n) {
 
 		if (tieneHijos(n)) {
@@ -57,6 +70,12 @@ public class Nodo {
 		System.out.print(n.getValor() + "/");
 	}
 
+	
+	/**
+	 * Busca un nodo en el arbol
+	 * @param valor Valor del nodo que quiere buscar
+	 * @return Nodo que quereis obtener o null sino encuentra el nodo en el arbol 
+	 */
 	public Nodo buscarNodo(String valor) {
 
 		if (this.valor.equals(valor)) {
@@ -74,6 +93,12 @@ public class Nodo {
 		return null;
 	}
 	
+	/**
+	 * Comprueba si un nodo esta en el arbol
+	 * @param valor Valor del nodo que queremos buscar
+	 * @return True si el nodo esta en el arbol y false si no lo esta
+	 */
+	
 	public boolean comprobarNodo(String valor) {
 		Nodo aux = buscarNodo(valor);
 		
@@ -84,6 +109,12 @@ public class Nodo {
 		}
 		
 	}
+	
+	/**
+	 * Te muestra la ruta desde la raiz hasta el nodo
+	 * @param valor Valor del nodo hasta donde queremos mostrar la ruta
+	 * @return Valor del nodo
+	 */
 
 	public String path(String valor) {
 			System.out.print(this.valor + "/");
@@ -100,7 +131,6 @@ public class Nodo {
 				}
 			}
 			return null;
-		
 	}
 
 	public void mostrarArbol(Nodo n) {
