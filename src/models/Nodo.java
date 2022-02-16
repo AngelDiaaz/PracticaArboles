@@ -56,10 +56,27 @@ public class Nodo {
 		}
 		System.out.print(n.getValor() + "/");
 	}
-	
-	
-	
-	
+
+	public Nodo buscarNodo(String valor) {
+
+		if (this.valor.equals(valor)) {
+			return this;
+		}
+		if (tieneHijos(this)) {
+			for (int i = 0; i < this.hijos.size(); i++) {
+
+				var n = this.hijos.get(i).buscarNodo(valor);
+				if (n != null) {
+					return n;
+				} 
+			}
+		}
+		return null;
+	}
+
+	public void mostrarArbol(Nodo n) {
+
+	}
 
 	@Override
 	public String toString() {

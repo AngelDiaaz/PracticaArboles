@@ -44,14 +44,9 @@ public class MainApp {
 		Arbol cabesa = new Arbol(raiz);
 		
 		//cabesa.preOrden();
+		//cabesa.postOrden();
 		
-		System.out.println();
-		
-		cabesa.postOrden();
-		
-		
-		
-		
+		System.out.println(cabesa.buscarNodo("cerdo"));		
 		
 	}
 

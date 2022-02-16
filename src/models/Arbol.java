@@ -16,4 +16,12 @@ public class Arbol {
 	public void postOrden() {
 		this.raiz.postOrden(raiz);
 	}
+	
+	public Nodo buscarNodo(String valor) {
+		return this.raiz.buscarNodo(valor);
+	}
+	
+	public void mostarArbol() {
+		this.raiz.mostrarArbol(raiz);
+	}
 }
