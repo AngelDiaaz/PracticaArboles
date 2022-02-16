@@ -46,8 +46,9 @@ public class MainApp {
 		//cabesa.preOrden();
 		//cabesa.postOrden();
 		
-		System.out.println(cabesa.buscarNodo("cerdo"));		
+		System.out.println(cabesa.buscarNodo("rdo"));		
 		
+		cabesa.path("p");
 	}
 
 }

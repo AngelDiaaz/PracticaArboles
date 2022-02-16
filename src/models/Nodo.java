@@ -68,10 +68,39 @@ public class Nodo {
 				var n = this.hijos.get(i).buscarNodo(valor);
 				if (n != null) {
 					return n;
-				} 
+				}
 			}
 		}
 		return null;
+	}
+	
+	public boolean comprobarNodo(String valor) {
+		Nodo aux = buscarNodo(valor);
+		
+		if(aux != null) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+
+	public String path(String valor) {
+			System.out.print(this.valor + "/");
+			if (this.valor.equals(valor)) {
+				return this.getValor();
+			}
+			if (tieneHijos(this)) {
+				for (int i = 0; i < this.hijos.size(); i++) {
+
+					var n = this.hijos.get(i).path(valor);
+					if (n != null) {
+						return n;
+					}
+				}
+			}
+			return null;
+		
 	}
 
 	public void mostrarArbol(Nodo n) {
