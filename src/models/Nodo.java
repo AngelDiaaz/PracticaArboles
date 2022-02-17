@@ -28,10 +28,11 @@ public class Nodo {
 
 	/**
 	 * Comprueba si el nodo tiene nodos hijos o no
+	 * 
 	 * @param n Nodo a comprobar si tiene hijos
 	 * @return True si tiene hijos y false si no los tiene
 	 */
-	
+
 	public boolean tieneHijos(Nodo n) {
 		if (n.hijos == null) {
 			return false;
@@ -39,12 +40,14 @@ public class Nodo {
 			return true;
 		}
 	}
-	
+
 	/**
-	 * Muestra el arbol con el recorrido preOrden, empezando por la raiz y siguiendo por los nodos hijos
+	 * Muestra el arbol con el recorrido preOrden, empezando por la raiz y siguiendo
+	 * por los nodos hijos
+	 * 
 	 * @param n Nodo que quieres sacar
 	 */
-	
+
 	public void preOrden(Nodo n) {
 		System.out.print(n.getValor() + "/");
 
@@ -56,10 +59,12 @@ public class Nodo {
 	}
 
 	/**
-	 * Muestra el arbol en recorrido postOrden, empezando por los nodos hijos y,luego por la raiz
+	 * Muestra el arbol en recorrido postOrden, empezando por los nodos hijos
+	 * y,luego por la raiz
+	 * 
 	 * @param n Nodo que quieres sacar
 	 */
-	
+
 	public void postOrden(Nodo n) {
 
 		if (tieneHijos(n)) {
@@ -70,11 +75,11 @@ public class Nodo {
 		System.out.print(n.getValor() + "/");
 	}
 
-	
 	/**
 	 * Busca un nodo en el arbol
+	 * 
 	 * @param valor Valor del nodo que quiere buscar
-	 * @return Nodo que quereis obtener o null sino encuentra el nodo en el arbol 
+	 * @return Nodo que quereis obtener o null sino encuentra el nodo en el arbol
 	 */
 	public Nodo buscarNodo(String valor) {
 
@@ -94,43 +99,71 @@ public class Nodo {
 	}
 	
 	/**
+	 * Inserta un nodo hijo en el nodo padre que nosotros queramos
+	 * @param padre Nodo al que queremos insertarle un nodo hijo
+	 * @param valor Valor del nodo que queremos insertar
+	 * @return Nodo que queremos insertar
+	 */
+
+	public Nodo insertarNodo(Nodo padre, String valor) {
+		if (this.valor.equals(padre.valor)) {
+			ArrayList<Nodo> vacio = new ArrayList<Nodo>();// Creamos un array list vacio para agregarselo al nuevo nodo,
+															// por si luego queremos añadir a ese nodo, nodos hijos
+			this.hijos.add(0, new Nodo(valor, vacio));
+			return this;
+		}
+		if (tieneHijos(this)) {
+			for (int i = 0; i < this.hijos.size(); i++) {
+
+				var n = this.hijos.get(i).insertarNodo(padre, valor);
+				if (n != null) {
+					return n;
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * Comprueba si un nodo esta en el arbol
+	 * 
 	 * @param valor Valor del nodo que queremos buscar
 	 * @return True si el nodo esta en el arbol y false si no lo esta
 	 */
-	
+
 	public boolean comprobarNodo(String valor) {
 		Nodo aux = buscarNodo(valor);
-		
-		if(aux != null) {
+
+		if (aux != null) {
 			return true;
 		} else {
 			return false;
 		}
-		
+
 	}
-	
+
 	/**
 	 * Te muestra la ruta desde la raiz hasta el nodo
+	 * 
 	 * @param valor Valor del nodo hasta donde queremos mostrar la ruta
 	 * @return Valor del nodo
 	 */
 
 	public String path(String valor) {
-			System.out.print(this.valor + "/");
-			if (this.valor.equals(valor)) {
-				return this.getValor();
-			}
-			if (tieneHijos(this)) {
-				for (int i = 0; i < this.hijos.size(); i++) {
+		System.out.print(this.valor + "/");
+		if (this.valor.equals(valor)) {
+			return this.getValor();
+		}
+		if (tieneHijos(this)) {
+			for (int i = 0; i < this.hijos.size(); i++) {
 
-					var n = this.hijos.get(i).path(valor);
-					if (n != null) {
-						return n;
-					}
+				var n = this.hijos.get(i).path(valor);
+				if (n != null) {
+					return n;
 				}
 			}
-			return null;
+		}
+		return null;
 	}
 
 	public void mostrarArbol(Nodo n) {

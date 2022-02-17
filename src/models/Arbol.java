@@ -36,6 +36,21 @@ public class Arbol {
 	}
 	
 	/**
+	 * Inserta un nodo hijo en el nodo padre que nosotros queramos
+	 * @param padre Nodo al que queremos insertarle un nodo hijo
+	 * @param valor Valor del nodo que queremos insertar
+	 */
+	
+	public void insertarNodo(Nodo padre, String valor) {
+		boolean contiene = this.raiz.comprobarNodo(padre.getValor());
+		if(contiene == true) {
+			this.raiz.insertarNodo(padre, valor);
+		} else {
+			System.out.println("No existe el nodo padre en este arbol");
+		}
+	}
+	
+	/**
 	 * Llama al metodo path de la clase Nodo
 	 * @param valor Valor del nodo hasta donde queremos mostrar la ruta
 	 * @return Ruta del nodo si lo contiene el arbol
