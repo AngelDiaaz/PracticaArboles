@@ -49,13 +49,15 @@ public class MainApp {
 		Arbol cabesa = new Arbol(raiz);
 		
 		//cabesa.postOrden();
-		//cabesa.path("pollo");
+		//cabesa.path("ternera");
 		
 		//System.out.println(cabesa.buscarNodo("cerdo"));		
 		
-		cabesa.insertarNodo(seis, "hola");
-		System.out.println(cabesa.buscarNodo("hola"));
-		cabesa.preOrden();
+		//cabesa.insertarNodo(seis, "hola");
+		//System.out.println(cabesa.buscarNodo("hola"));
+		//cabesa.preOrden();
+		
+		cabesa.mostarArbol();
 		
 	}
 

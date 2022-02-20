@@ -6,6 +6,7 @@ public class Nodo {
 
 	private String valor;
 	private ArrayList<Nodo> hijos;
+	private ArrayList<String> arbol;
 
 	public Nodo(String valor) {
 		super();
@@ -16,6 +17,7 @@ public class Nodo {
 		super();
 		this.valor = valor;
 		this.hijos = hijos;
+		this.arbol = new ArrayList<String>();
 	}
 
 	public String getValor() {
@@ -34,11 +36,12 @@ public class Nodo {
 	 */
 
 	public boolean tieneHijos(Nodo n) {
-		if (n.hijos == null) {
-			return false;
-		} else {
-			return true;
-		}
+//		if (n.hijos == null) {
+//			return false;
+//		} else {
+//			return true;
+//		}
+		return this.hijos != null;
 	}
 
 	/**
@@ -165,9 +168,33 @@ public class Nodo {
 		}
 		return null;
 	}
+	
+//	public ArrayList<Nodo> sacarNodos(Nodo n) {
+//		arbol.add(n);
+//		
+//		
+//		if (tieneHijos(n)) {
+//			for (int i = 0; i < n.hijos.size(); i++) {
+//				sacarNodos(n.hijos.get(i));
+//			}
+//		}
+//		return arbol;
+//	}
 
 	public void mostrarArbol(Nodo n) {
+		//arbol = sacarNodos(n);
+		System.out.println(n.valor + "/");
 
+		if (tieneHijos(n) == true) {
+			for (int i = 0; i < n.hijos.size(); i++) {
+				System.out.print(n.valor + "/");
+				mostrarArbol(n.hijos.get(i));
+				System.out.println(hijos.get(i).valor + "/");
+			}
+		} else {
+		//System.out.print(hijos.get(0).valor + "/");
+			System.out.println("hola");
+		}
 	}
 
 	@Override
