@@ -1,5 +1,7 @@
 package models;
 
+import java.util.ArrayList;
+
 public class Arbol {
 
 	private Nodo raiz;
@@ -56,13 +58,18 @@ public class Arbol {
 	 * @return Ruta del nodo si lo contiene el arbol
 	 */
 
-	public String path(String valor) {
-		boolean contiene = this.raiz.comprobarNodo(valor);
-		if (contiene == true) {
-			return this.raiz.path(valor);
+	public void path(String valor) {
+		if (this.raiz.comprobarNodo(valor)) {
+			var almacen = this.raiz.path(valor, new ArrayList<String>());
+			
+			System.out.println();
+			for (int i = almacen.size() - 1; i >= 0; i--) {
+				System.out.print(almacen.get(i) + "/");
+			}
+			System.out.print(valor + "/");
+			
 		} else {
 			System.out.println("No existe un nodo con ese valor en este arbol");
-			return null;
 		}
 	}
 

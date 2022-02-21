@@ -6,7 +6,8 @@ public class Nodo {
 
 	private String valor;
 	private ArrayList<Nodo> hijos;
-	private ArrayList<String> arbol;
+	private ArrayList<Nodo> arbol;
+
 
 	public Nodo(String valor) {
 		super();
@@ -17,7 +18,7 @@ public class Nodo {
 		super();
 		this.valor = valor;
 		this.hijos = hijos;
-		this.arbol = new ArrayList<String>();
+		this.arbol = new ArrayList<Nodo>();
 	}
 
 	public String getValor() {
@@ -152,17 +153,15 @@ public class Nodo {
 	 * @return Valor del nodo
 	 */
 
-	public String path(String valor) {
+	public ArrayList<String> path(String valor, ArrayList<String> path) {
 		if (this.valor.equals(valor)) {
-			System.out.print(valor + "/");
-			return this.getValor();
+			return path;
 		}
 		if (tieneHijos(this)) {
 			for (int i = 0; i < this.hijos.size(); i++) {
-
-				var n = this.hijos.get(i).path(valor);
+				var n = this.hijos.get(i).path(valor, path);
 				if (n != null) {
-					System.out.print(this.valor + "/");
+					path.add(this.valor);
 					return n;
 				}
 			}
@@ -170,31 +169,20 @@ public class Nodo {
 		return null;
 	}
 	
-//	public ArrayList<Nodo> sacarNodos(Nodo n) {
-//		arbol.add(n);
-//		
-//		
-//		if (tieneHijos(n)) {
-//			for (int i = 0; i < n.hijos.size(); i++) {
-//				sacarNodos(n.hijos.get(i));
-//			}
-//		}
-//		return arbol;
-//	}
+	public ArrayList<Nodo> sacarNodos(Nodo n) {
+		arbol.add(n);
+		
+		if (tieneHijos(n)) {
+			for (int i = 0; i < n.hijos.size(); i++) {
+				sacarNodos(n.hijos.get(i));
+			}
+		}
+		return arbol;
+	}
 
 	public void mostrarArbol(Nodo n) {
-		//arbol = sacarNodos(n);
-		System.out.println(n.valor + "/");
-
-		if (tieneHijos(n) == true) {
-			for (int i = 0; i < n.hijos.size(); i++) {
-				System.out.print(n.valor + "/");
-				mostrarArbol(n.hijos.get(i));
-				System.out.println(hijos.get(i).valor + "/");
-			}
-		} else {
-		//System.out.print(hijos.get(0).valor + "/");
-			System.out.println("hola");
+		for (Nodo nodo : arbol) {
+			nodo.path(valor, new ArrayList<String>());
 		}
 	}
 
