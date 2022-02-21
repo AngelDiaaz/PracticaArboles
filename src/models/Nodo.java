@@ -153,8 +153,8 @@ public class Nodo {
 	 */
 
 	public String path(String valor) {
-		System.out.print(this.valor + "/");
 		if (this.valor.equals(valor)) {
+			System.out.print(valor + "/");
 			return this.getValor();
 		}
 		if (tieneHijos(this)) {
@@ -162,6 +162,7 @@ public class Nodo {
 
 				var n = this.hijos.get(i).path(valor);
 				if (n != null) {
+					System.out.print(this.valor + "/");
 					return n;
 				}
 			}

@@ -49,7 +49,7 @@ public class MainApp {
 		Arbol cabesa = new Arbol(raiz);
 		
 		//cabesa.postOrden();
-		//cabesa.path("ternera");
+		cabesa.path("cinco");
 		
 		//System.out.println(cabesa.buscarNodo("cerdo"));		
 		
@@ -57,7 +57,7 @@ public class MainApp {
 		//System.out.println(cabesa.buscarNodo("hola"));
 		//cabesa.preOrden();
 		
-		cabesa.mostarArbol();
+		//cabesa.mostarArbol();
 		
 	}
 
