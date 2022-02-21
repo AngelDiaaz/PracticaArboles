@@ -9,11 +9,6 @@ public class Nodo {
 	private ArrayList<Nodo> arbol;
 
 
-	public Nodo(String valor) {
-		super();
-		this.valor = valor;
-	}
-
 	public Nodo(String valor, ArrayList<Nodo> hijos) {
 		super();
 		this.valor = valor;
@@ -37,11 +32,6 @@ public class Nodo {
 	 */
 
 	public boolean tieneHijos(Nodo n) {
-//		if (n.hijos == null) {
-//			return false;
-//		} else {
-//			return true;
-//		}
 		return this.hijos != null;
 	}
 
@@ -169,6 +159,12 @@ public class Nodo {
 		return null;
 	}
 	
+	/**
+	 * Alamacena todo los nodos del arbol en un array list en modo preOrden
+	 * @param n Nodo que quiero almacenar
+	 * @return ArrayList con todos los nodos del arbol en forma preOrden
+	 */
+	
 	public ArrayList<Nodo> sacarNodos(Nodo n) {
 		arbol.add(n);
 		
@@ -178,12 +174,6 @@ public class Nodo {
 			}
 		}
 		return arbol;
-	}
-
-	public void mostrarArbol(Nodo n) {
-		for (Nodo nodo : arbol) {
-			nodo.path(valor, new ArrayList<String>());
-		}
 	}
 
 	@Override
