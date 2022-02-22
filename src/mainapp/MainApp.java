@@ -48,7 +48,7 @@ public class MainApp {
 		Arbol cabesa = new Arbol(raiz);
 
 		// Recorre el arbol de diferente formas
-		// cabesa.postOrden();
+		//cabesa.postOrden();
 		cabesa.preOrden();
 
 		System.out.println();
