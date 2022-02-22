@@ -178,7 +178,12 @@ public class Nodo {
 	
 	public Nodo podar(String valor) {
 		if (this.valor.equals(valor)) {
-			return this;
+			Nodo n = this;
+			if(tieneHijos(this)) {
+				
+			}
+			this.hijos.clear();
+			return n;
 		}
 		if (tieneHijos(this)) {
 			for (int i = 0; i < this.hijos.size(); i++) {
