@@ -91,4 +91,8 @@ public class Arbol {
 			path(nodo.getValor()); // Saca el path de todos los nodos del arbol
 		}
 	}
+	
+	public void podar(Nodo n){
+		
+	}
 }

@@ -175,6 +175,22 @@ public class Nodo {
 		}
 		return arbol;
 	}
+	
+	public Nodo podar(String valor) {
+		if (this.valor.equals(valor)) {
+			return this;
+		}
+		if (tieneHijos(this)) {
+			for (int i = 0; i < this.hijos.size(); i++) {
+
+				var n = this.hijos.get(i).podar(valor);
+				if (n != null) {
+					return n;
+				}
+			}
+		}
+		return null;
+	}
 
 	@Override
 	public String toString() {
