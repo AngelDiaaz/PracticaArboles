@@ -206,14 +206,13 @@ public class Nodo {
 	 * padre. De esta forma, el nodo origen pasa a ser un nuevo hijo de nodo
 	 * destino.
 	 * 
-	 * @param origen Nodo que queremos cambiar de padre
+	 * @param origen  Nodo que queremos cambiar de padre
 	 * @param destino Nodo padre que queremos añadirle un nuevo nodo hijo
 	 * @return Nodo destino
 	 */
 
 	public Nodo cortarPegar(Nodo origen, Nodo destino) {
 		if (this.valor.equals(destino.valor)) {
-			System.out.println(this);
 			this.getHijos().add(origen);
 			return this;
 		}
@@ -229,6 +228,33 @@ public class Nodo {
 			}
 		}
 		return null;
+	}
+
+	public int profundidad(String valor, int prof) {
+		if (this.valor.equals(valor)) {
+			return prof;
+		}
+
+		if (tieneHijos(this)) {
+			for (int i = 0; i < this.hijos.size(); i++) {
+
+				var n = this.hijos.get(i).profundidad(valor, ++prof);
+				if (n != -1)
+					return n;
+				else
+					--prof;
+			}
+		}
+		return -1;
+	}
+
+	public boolean estaBalanceado() {
+		
+		for (Nodo nodo : arbol) {
+			profundidad(nodo.valor, 0);
+		}
+		
+		return false;
 	}
 
 	@Override

@@ -72,8 +72,9 @@ public class MainApp {
 		//cabesa.podar(pollo);
 
 		//Corta y pega el nodo donde lo queremos
-		cabesa.cortarPegar(uno, ternera);
+		//cabesa.cortarPegar(dos, cuatro);
 		cabesa.mostrarArbol();
+		System.out.println(cabesa.profundidad("seis"));
 	}
 
 }

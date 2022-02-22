@@ -112,11 +112,23 @@ public class Arbol {
 	 * padre. De esta forma, el nodo origen pasa a ser un nuevo hijo de nodo
 	 * destino.
 	 * 
-	 * @param origen Nodo que queremos cambiar de padre
+	 * @param origen  Nodo que queremos cambiar de padre
 	 * @param destino Nodo padre que queremos añadirle un nuevo nodo hijo
 	 */
 
 	public void cortarPegar(Nodo origen, Nodo destino) {
 		this.raiz.cortarPegar(origen, destino);
 	}
+	
+	public int profundidad(String valor) {
+		return this.raiz.profundidad(valor, 0);
+	}
+
+	public boolean estaBalanceado() {
+		if (raiz.estaBalanceado())
+			return true;
+		else
+			return false;
+	}
+
 }
