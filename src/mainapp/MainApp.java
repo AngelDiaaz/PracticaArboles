@@ -51,22 +51,26 @@ public class MainApp {
 		//cabesa.postOrden();
 		cabesa.preOrden();
 
-		System.out.println();
+		//System.out.println();
 
 		// Muestra la ruta del nodo a la raiz, si el nodo se encuentra en el arbol
-		cabesa.path("ternera");
+		//cabesa.path("ternera");
 
 		//Busca el nodo y lo devuelve si se encuentra
-		System.out.println(cabesa.buscarNodo("cerdo"));
+		//System.out.println(cabesa.buscarNodo("cerdo"));
 
 		System.out.println();
 		
 		//Inserta un nodo donde queremos
-		cabesa.insertarNodo(seis, "hola");
+		//cabesa.insertarNodo(seis, "hola");
 		// System.out.println(cabesa.buscarNodo("hola"));
 
 		// Muestra el arbol de los nodos
-		cabesa.mostarArbol();
+		//cabesa.mostarArbol();
+		
+		cabesa.podar(pollo);
+		System.out.println();
+		cabesa.preOrden();
 	}
 
 }

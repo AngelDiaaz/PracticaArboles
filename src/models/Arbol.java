@@ -35,7 +35,7 @@ public class Arbol {
 	 */
 
 	public Nodo buscarNodo(String valor) {
-		if (this.raiz.comprobarNodo(valor)) {//Compruebo si el nodo se encuentra en el arbol
+		if (this.raiz.comprobarNodo(valor)) {// Compruebo si el nodo se encuentra en el arbol
 			return this.raiz.buscarNodo(valor);
 		} else {
 			System.out.println("No existe este nodo en este arbol");
@@ -67,7 +67,7 @@ public class Arbol {
 	 */
 
 	public void path(String valor) {
-		if (this.raiz.comprobarNodo(valor)) {//Compruebo si el nodo se encuentra en el arbol
+		if (this.raiz.comprobarNodo(valor)) {// Compruebo si el nodo se encuentra en el arbol
 			var almacen = this.raiz.path(valor, new ArrayList<String>());
 
 			for (int i = almacen.size() - 1; i >= 0; i--) {
@@ -91,8 +91,14 @@ public class Arbol {
 			path(nodo.getValor()); // Saca el path de todos los nodos del arbol
 		}
 	}
-	
-	public void podar(Nodo n){
-		
+
+	/**
+	 * Elimina la rama desde el nodo concreto de un arbol, llamando al metodo podar
+	 * de la clase nodo
+	 * @param n Nodo concreto a partir del que queremos eliminar
+	 */
+
+	public void podar(Nodo n) {
+		this.raiz.podar(n.getValor());
 	}
 }

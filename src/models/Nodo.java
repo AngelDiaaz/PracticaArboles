@@ -8,7 +8,6 @@ public class Nodo {
 	private ArrayList<Nodo> hijos;
 	private ArrayList<Nodo> arbol;
 
-
 	public Nodo(String valor, ArrayList<Nodo> hijos) {
 		super();
 		this.valor = valor;
@@ -91,9 +90,10 @@ public class Nodo {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Inserta un nodo hijo en el nodo padre que nosotros queramos
+	 * 
 	 * @param padre Nodo al que queremos insertarle un nodo hijo
 	 * @param valor Valor del nodo que queremos insertar
 	 * @return Nodo que queremos insertar
@@ -158,16 +158,17 @@ public class Nodo {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Alamacena todo los nodos del arbol en un array list en modo preOrden
+	 * 
 	 * @param n Nodo que quiero almacenar
 	 * @return ArrayList con todos los nodos del arbol en forma preOrden
 	 */
-	
+
 	public ArrayList<Nodo> sacarNodos(Nodo n) {
 		arbol.add(n);
-		
+
 		if (tieneHijos(n)) {
 			for (int i = 0; i < n.hijos.size(); i++) {
 				sacarNodos(n.hijos.get(i));
@@ -176,20 +177,22 @@ public class Nodo {
 		return arbol;
 	}
 	
+	/**
+	 * Elimina la rama desde el nodo concreto de un arbol
+	 * @param valor Valor del nodo concreto que a partir de ahi queremos eliminar
+	 * @return Nodo concreto
+	 */
+
 	public Nodo podar(String valor) {
 		if (this.valor.equals(valor)) {
-			Nodo n = this;
-			if(tieneHijos(this)) {
-				
-			}
-			this.hijos.clear();
-			return n;
+			return this;
 		}
 		if (tieneHijos(this)) {
 			for (int i = 0; i < this.hijos.size(); i++) {
-
 				var n = this.hijos.get(i).podar(valor);
 				if (n != null) {
+					this.hijos.remove(n);// Cuando encuentre el nodo que queremos podar eliminamos ese nodo y a su vez
+											// elimina sus nodos hijos
 					return n;
 				}
 			}
