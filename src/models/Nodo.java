@@ -176,9 +176,10 @@ public class Nodo {
 		}
 		return arbol;
 	}
-	
+
 	/**
 	 * Elimina la rama desde el nodo concreto de un arbol
+	 * 
 	 * @param valor Valor del nodo concreto que a partir de ahi queremos eliminar
 	 * @return Nodo concreto
 	 */
@@ -193,6 +194,36 @@ public class Nodo {
 				if (n != null) {
 					this.hijos.remove(n);// Cuando encuentre el nodo que queremos podar eliminamos ese nodo y a su vez
 											// elimina sus nodos hijos
+					return n;
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Corta y pega un nodo a otro nodo, se elige un objeto nodo y se cambia su
+	 * padre. De esta forma, el nodo origen pasa a ser un nuevo hijo de nodo
+	 * destino.
+	 * 
+	 * @param origen Nodo que queremos cambiar de padre
+	 * @param destino Nodo padre que queremos añadirle un nuevo nodo hijo
+	 * @return Nodo destino
+	 */
+
+	public Nodo cortarPegar(Nodo origen, Nodo destino) {
+		if (this.valor.equals(destino.valor)) {
+			System.out.println(this);
+			this.getHijos().add(origen);
+			return this;
+		}
+
+		podar(origen.valor);
+
+		if (tieneHijos(this)) {
+			for (int i = 0; i < this.hijos.size(); i++) {
+				var n = this.hijos.get(i).cortarPegar(origen, destino);
+				if (n != null) {
 					return n;
 				}
 			}

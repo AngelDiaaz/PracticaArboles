@@ -85,7 +85,7 @@ public class Arbol {
 	 * arbol con todos los nodos
 	 */
 
-	public void mostarArbol() {
+	public void mostrarArbol() {
 		var nodos = this.raiz.sacarNodos(raiz);// Almacena todos los nodos
 		for (Nodo nodo : nodos) {
 			path(nodo.getValor()); // Saca el path de todos los nodos del arbol
@@ -95,10 +95,28 @@ public class Arbol {
 	/**
 	 * Elimina la rama desde el nodo concreto de un arbol, llamando al metodo podar
 	 * de la clase nodo
+	 * 
 	 * @param n Nodo concreto a partir del que queremos eliminar
 	 */
 
 	public void podar(Nodo n) {
-		this.raiz.podar(n.getValor());
+		if (this.raiz.comprobarNodo(n.getValor())) {// Compruebo si el nodo se encuentra en el arbol
+			this.raiz.podar(n.getValor());
+		} else {
+			System.out.println("No existe un nodo con ese valor en este arbol");
+		}
+	}
+
+	/**
+	 * Corta y pega un nodo a otro nodo, se elige un objeto nodo y se cambia su
+	 * padre. De esta forma, el nodo origen pasa a ser un nuevo hijo de nodo
+	 * destino.
+	 * 
+	 * @param origen Nodo que queremos cambiar de padre
+	 * @param destino Nodo padre que queremos añadirle un nuevo nodo hijo
+	 */
+
+	public void cortarPegar(Nodo origen, Nodo destino) {
+		this.raiz.cortarPegar(origen, destino);
 	}
 }

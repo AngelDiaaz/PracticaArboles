@@ -66,11 +66,14 @@ public class MainApp {
 		// System.out.println(cabesa.buscarNodo("hola"));
 
 		// Muestra el arbol de los nodos
-		//cabesa.mostarArbol();
+		//cabesa.mostrarArbol();
 		
-		cabesa.podar(pollo);
-		System.out.println();
-		cabesa.preOrden();
+		//Elimina la rama entera seleccionada
+		//cabesa.podar(pollo);
+
+		//Corta y pega el nodo donde lo queremos
+		cabesa.cortarPegar(uno, ternera);
+		cabesa.mostrarArbol();
 	}
 
 }
