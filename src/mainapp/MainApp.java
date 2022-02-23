@@ -61,7 +61,7 @@ public class MainApp {
 
 		
 		//Inserta un nodo donde queremos
-		//cabesa.insertarNodo(seis, "hola");
+		cabesa.insertarNodo(seis, "hola");
 		// System.out.println(cabesa.buscarNodo("hola"));
 
 		// Muestra el arbol de los nodos

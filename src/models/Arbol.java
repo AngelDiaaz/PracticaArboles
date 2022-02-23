@@ -6,11 +6,13 @@ public class Arbol {
 
 	private Nodo raiz;
 	private ArrayList<Integer> aux;
+	private ArrayList<Nodo> nodos;
 
 	public Arbol(Nodo raiz) {
 		super();
 		this.raiz = raiz;
 		this.aux = new ArrayList<Integer>();
+		this.nodos = new ArrayList<Nodo>();
 	}
 
 	/**
@@ -53,8 +55,7 @@ public class Arbol {
 	 */
 
 	public void insertarNodo(Nodo padre, String valor) {
-		boolean contiene = this.raiz.comprobarNodo(padre.getValor());
-		if (contiene == true) {
+		if (this.raiz.comprobarNodo(padre.getValor())) {
 			this.raiz.insertarNodo(padre, valor);
 		} else {
 			System.out.println("No existe el nodo padre en este arbol");
@@ -88,7 +89,7 @@ public class Arbol {
 	 */
 
 	public void mostrarArbol() {
-		var nodos = this.raiz.sacarNodos(raiz);// Almacena todos los nodos
+		nodos = this.raiz.sacarNodos(raiz);// Almacena todos los nodos
 		for (Nodo nodo : nodos) {
 			path(nodo.getValor()); // Saca el path de todos los nodos del arbol
 		}
@@ -119,7 +120,13 @@ public class Arbol {
 	 */
 
 	public void cortarPegar(Nodo origen, Nodo destino) {
-		this.raiz.cortarPegar(origen, destino);
+		if (this.raiz.comprobarNodo(origen.getValor()) && this.raiz.comprobarNodo(destino.getValor())) // Compruebo si
+																										// el nodo se
+																										// encuentra en
+																										// el arbol
+			this.raiz.cortarPegar(origen, destino);
+		else 
+			System.out.println("No existe un nodo con alguno de esos valores en este arbol");
 	}
 
 	/**
@@ -142,7 +149,7 @@ public class Arbol {
 	 */
 
 	public boolean estaBalanceado() {
-		ArrayList<Nodo> nodos = raiz.sacarNodos(raiz);// Almaceno todos los nodos en el array
+		nodos = raiz.sacarNodos(raiz);// Almaceno todos los nodos en el array
 
 		for (Nodo nodo : nodos) {
 			if (nodo.esHoja()) {// Compruebo cual nodo es una hoja y cual no
