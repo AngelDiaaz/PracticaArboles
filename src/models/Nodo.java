@@ -168,7 +168,6 @@ public class Nodo {
 
 	public ArrayList<Nodo> sacarNodos(Nodo n) {
 		arbol.add(n);
-
 		if (tieneHijos(n)) {
 			for (int i = 0; i < n.hijos.size(); i++) {
 				sacarNodos(n.hijos.get(i));
@@ -212,12 +211,11 @@ public class Nodo {
 	 */
 
 	public Nodo cortarPegar(Nodo origen, Nodo destino) {
+		podar(origen.valor);
 		if (this.valor.equals(destino.valor)) {
 			this.getHijos().add(origen);
 			return this;
 		}
-
-		podar(origen.valor);
 
 		if (tieneHijos(this)) {
 			for (int i = 0; i < this.hijos.size(); i++) {
@@ -230,6 +228,13 @@ public class Nodo {
 		return null;
 	}
 
+	/**
+	 * Comprueba si un nodo es hoja, es decir, si el nodo no tiene hijos y es la
+	 * ultima de la rama de un arbol
+	 * 
+	 * @return True si es hoja y false si no lo es
+	 */
+
 	public boolean esHoja() {
 
 		if (this.hijos.isEmpty())
@@ -237,6 +242,15 @@ public class Nodo {
 		else
 			return false;
 	}
+
+	/**
+	 * Muestra la profundidad que tiene un nodo en el arbol, contando con la raiz
+	 * que este en el nivel 0
+	 *
+	 * @param valor Valor de nodo que queremos mostrar la profundidad
+	 * @param prof Profundidad inicial del nodo 
+	 * @return Nivel de profundidad del nodo
+	 */
 
 	public int profundidad(String valor, int prof) {
 		if (this.valor.equals(valor)) {
@@ -254,15 +268,6 @@ public class Nodo {
 			}
 		}
 		return -1;
-	}
-
-	public boolean estaBalanceado() {
-
-		for (Nodo nodo : arbol) {
-			profundidad(nodo.valor, 0);
-		}
-
-		return false;
 	}
 
 	@Override

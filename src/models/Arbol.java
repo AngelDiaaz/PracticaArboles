@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class Arbol {
 
 	private Nodo raiz;
+	private ArrayList<Integer> aux;
 
 	public Arbol(Nodo raiz) {
 		super();
 		this.raiz = raiz;
+		this.aux = new ArrayList<Integer>();
 	}
 
 	/**
@@ -119,16 +121,44 @@ public class Arbol {
 	public void cortarPegar(Nodo origen, Nodo destino) {
 		this.raiz.cortarPegar(origen, destino);
 	}
-	
+
+	/**
+	 * Muestra la profundidad que tiene un nodo en el arbol, contando con la raiz
+	 * que este en el nivel 0
+	 * 
+	 * @param valor Valor de nodo que queremos mostrar la profundidad
+	 * @return Nivel de profundidad del nodo
+	 */
+
 	public int profundidad(String valor) {
 		return this.raiz.profundidad(valor, 0);
 	}
 
+	/**
+	 * Dice si un arbol esta balanceado, es decir, si sus hojas nunca difieren en
+	 * mas de 1 nivel de profundidad
+	 * 
+	 * @return True si el arbol esta balanceado y false si no lo esta
+	 */
+
 	public boolean estaBalanceado() {
-		if (raiz.estaBalanceado())
-			return true;
-		else
-			return false;
+		ArrayList<Nodo> nodos = raiz.sacarNodos(raiz);// Almaceno todos los nodos en el array
+
+		for (Nodo nodo : nodos) {
+			if (nodo.esHoja()) {// Compruebo cual nodo es una hoja y cual no
+				aux.add(profundidad(nodo.getValor()));
+			}
+		}
+
+		for (int i = 0; i < aux.size(); i++) {
+			for (int j = 0; j < aux.size(); j++) {
+				if ((aux.get(i) - aux.get(j)) < -1 || (aux.get(i) - aux.get(j)) > 1) {// Si la diferencia de nodos es
+																						// diferente a 1
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 }
