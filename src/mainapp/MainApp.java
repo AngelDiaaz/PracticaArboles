@@ -59,7 +59,7 @@ public class MainApp {
 		//Busca el nodo y lo devuelve si se encuentra
 		//System.out.println(cabesa.buscarNodo("cerdo"));
 
-		System.out.println();
+		System.out.println(uno.esHoja());
 		
 		//Inserta un nodo donde queremos
 		//cabesa.insertarNodo(seis, "hola");

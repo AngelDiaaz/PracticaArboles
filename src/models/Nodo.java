@@ -230,6 +230,14 @@ public class Nodo {
 		return null;
 	}
 
+	public boolean esHoja() {
+
+		if (this.hijos.isEmpty())
+			return true;
+		else
+			return false;
+	}
+
 	public int profundidad(String valor, int prof) {
 		if (this.valor.equals(valor)) {
 			return prof;
@@ -249,11 +257,11 @@ public class Nodo {
 	}
 
 	public boolean estaBalanceado() {
-		
+
 		for (Nodo nodo : arbol) {
 			profundidad(nodo.valor, 0);
 		}
-		
+
 		return false;
 	}
 
