@@ -89,6 +89,7 @@ public class Arbol {
 	 */
 
 	public void mostrarArbol() {
+		nodos.clear();// Vacio el array list de nodos por si tengo almacenado algun valor
 		nodos = this.raiz.sacarNodos(raiz);// Almacena todos los nodos
 		for (Nodo nodo : nodos) {
 			path(nodo.getValor()); // Saca el path de todos los nodos del arbol
@@ -125,7 +126,7 @@ public class Arbol {
 																										// encuentra en
 																										// el arbol
 			this.raiz.cortarPegar(origen, destino);
-		else 
+		else
 			System.out.println("No existe un nodo con alguno de esos valores en este arbol");
 	}
 
@@ -149,6 +150,7 @@ public class Arbol {
 	 */
 
 	public boolean estaBalanceado() {
+		nodos.clear();// Vacio el array list de nodos por si tengo almacenado algun valor
 		nodos = raiz.sacarNodos(raiz);// Almaceno todos los nodos en el array
 
 		for (Nodo nodo : nodos) {
